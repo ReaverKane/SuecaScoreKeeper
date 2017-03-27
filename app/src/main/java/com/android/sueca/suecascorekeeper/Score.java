@@ -10,16 +10,37 @@ import static com.android.sueca.suecascorekeeper.R.string.them;
 import static com.android.sueca.suecascorekeeper.R.string.us;
 
 public class Score extends AppCompatActivity {
+    private static final String U_SCORE = "Us Score";
+    private static final String T_SCORE = "Them Score";
+    private static final String U_GAMES = "Us Games";
+    private static final String T_GAMES = "Them Games";
     //Declaring Global Variables for the scores
     int usScore = 0;
     int themScore = 0;
     int usGames = 0;
     int themGames = 0;
 
+    //This shouldn't lose state on account that i kept it on portrait (too many buttons for landscape)
+    //but best make sure.
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt(U_SCORE, usScore);
+        savedInstanceState.putInt(T_SCORE, themScore);
+        savedInstanceState.putInt(U_GAMES, usGames);
+        savedInstanceState.putInt(T_GAMES, themGames);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+        if (savedInstanceState != null) {
+            usScore = savedInstanceState.getInt(U_SCORE, 0);
+            themScore = savedInstanceState.getInt(T_SCORE, 0);
+            usGames = savedInstanceState.getInt(U_GAMES, 0);
+            themGames = savedInstanceState.getInt(T_GAMES, 0);
+        }
         //Since the Text by default is blank, this sets the text to the default variables onCreate
         displayScoreUs(usScore);
         displayGamesUs(usGames);
