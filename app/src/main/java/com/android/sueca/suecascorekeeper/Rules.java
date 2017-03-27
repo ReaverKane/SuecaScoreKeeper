@@ -90,10 +90,32 @@ public class Rules extends AppCompatActivity {
     // This one is all me -Nuno
     private Button prev;
 
+    private static final String C_INDEX = "currentIndex";
+    private static final String P_COUNT = "pageCount";
+
+
+    //The score activity doesn't lose it's state, cause it won't rotate. But lets see if i can make this one keep its state.
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+        // Save the user's current game state
+        savedInstanceState.putInt(C_INDEX, currentIndex);
+        savedInstanceState.putInt(P_COUNT, pageCount);
+
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rules);
+        if (savedInstanceState !=null){
+            currentIndex = savedInstanceState.getInt(C_INDEX,0);
+            pageCount = savedInstanceState.getInt(P_COUNT,0);
+        }
 
         // Call all the methods
         init();
