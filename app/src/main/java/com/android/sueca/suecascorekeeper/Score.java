@@ -10,7 +10,7 @@ import static com.android.sueca.suecascorekeeper.R.string.them;
 import static com.android.sueca.suecascorekeeper.R.string.us;
 
 public class Score extends AppCompatActivity {
-
+    //Declaring Global Variables for the scores
     int usScore = 0;
     int themScore = 0;
     int usGames = 0;
@@ -20,12 +20,14 @@ public class Score extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+        //Since the Text by default is blank, this sets the text to the default variables onCreate
         displayScoreUs(usScore);
         displayGamesUs(usGames);
         displayScoreThem(themScore);
         displayGamesThem(themGames);
     }
 
+    //Add one Point to "Us" I feel there's Redundant code in the conditional part, but i'm not savvy enough to fix it.
     public void oneBtnUs(View v) {
         usScore = usScore + 1;
         if (usScore >= 4) {
@@ -39,6 +41,7 @@ public class Score extends AppCompatActivity {
         displayGamesUs(usGames);
     }
 
+    //Add two Points to "Us"
     public void twoBtnUs(View v) {
         usScore = usScore + 2;
         if (usScore >= 4) {
@@ -52,6 +55,7 @@ public class Score extends AppCompatActivity {
         displayGamesUs(usGames);
     }
 
+    //Add 4 Points to "Us"
     public void fourBtnUs(View v) {
         usScore = usScore + 4;
         if (usScore >= 4) {
@@ -65,6 +69,7 @@ public class Score extends AppCompatActivity {
         displayGamesUs(usGames);
     }
 
+    //Add 1 Point to "Them"
     public void oneBtnThem(View v) {
         themScore = themScore + 1;
         if (themScore >= 4) {
@@ -79,6 +84,7 @@ public class Score extends AppCompatActivity {
 
     }
 
+    //Add 2 Points to "Them"
     public void twoBtnThem(View v) {
         themScore = themScore + 2;
         if (themScore >= 4) {
@@ -92,6 +98,7 @@ public class Score extends AppCompatActivity {
         displayGamesUs(usGames);
     }
 
+    //Add 4 Points to "Them"
     public void fourBtnThem(View v) {
         themScore = themScore + 4;
         if (themScore >= 4) {
@@ -105,7 +112,7 @@ public class Score extends AppCompatActivity {
         displayGamesUs(usGames);
     }
 
-
+    //RESET
     public void resetBtn(View v) {
         usScore = 0;
         usGames = 0;
@@ -117,11 +124,13 @@ public class Score extends AppCompatActivity {
         displayScoreThem(themScore);
     }
 
+    // Back Button (It's Called Home because i wanted to make it a house icon, but i decided my life was complicated enough).
     public void homeBtn(View v) {
         Intent homeSwt = new Intent(this, MainActivity.class);
         startActivity(homeSwt);
     }
 
+    //Methods for displaying stuff.
     public void displayScoreUs(int score) {
         TextView scoreView = (TextView) findViewById(R.id.us_score);
         scoreView.setText(String.valueOf(score));
