@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Sueca Score Keeper</string>
+    <string name="mainTitle">Sueca Score</string>
+    <string name="Rules_BT">Rules</string>
+    <string name="Score_BT">Score</string>
+    <string name="rules"> RULES:</string>
+    <string name="prev">Prevous</string>
+    <string name="next">Next</string>
+    <string name="home_BTN">back</string>
+    <string name="us">Us</string>
+    <string name="them">Them</string>
+    <string name="Score">Score:</string>
+    <string name="one">61-90</string>
+    <string name="two">90+</string>
+    <string name="four">120</string>
+    <string name="games">Games:</string>
+    <string name="one_PT"> +1 </string>
+    <string name="two_PT"> +2 </string>
+    <string name="four_PT"> +4 </string>
+    <string name="reset">Reset</string>
+</resources>

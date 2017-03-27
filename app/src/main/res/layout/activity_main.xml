@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context="com.android.sueca.suecascorekeeper.MainActivity">
+
+    <!-- Had a Title, decided to keep the title bar instead,
+     so there's 2 styles in styles.xml, one for this page, another for the other 2 views.
+     You pick the styles in AndroidManifest.xml
+
+    <TextView
+        android:id="@+id/mainTitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/mainTitle"
+        android:textColor="#FFF"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+        -->
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="3"
+        android:scaleType="fitCenter"
+        android:src="@drawable/suits" />
+
+    <Button
+        android:id="@+id/scoreBtn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:onClick="scoreBtn"
+        android:text="@string/Score_BT" />
+    <!-- Android Studio Kept Nagging about hardcoded strings, so i figured out i can add the strings in the strings.xml-->
+
+    <Button
+        android:id="@+id/rulesBtn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="rulesBtn"
+        android:text="@string/Rules_BT" />
+
+
+</LinearLayout>
