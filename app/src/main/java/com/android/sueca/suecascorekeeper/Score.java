@@ -15,10 +15,10 @@ public class Score extends AppCompatActivity {
     private static final String U_GAMES = "Us Games";
     private static final String T_GAMES = "Them Games";
     //Declaring Global Variables for the scores
-    int usScore = 0;
-    int themScore = 0;
-    int usGames = 0;
-    int themGames = 0;
+    int usScore;
+    int themScore;
+    int usGames;
+    int themGames;
 
     //This shouldn't lose state on account that i kept it on portrait (too many buttons for landscape)
     //but best make sure.
@@ -36,10 +36,10 @@ public class Score extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
         if (savedInstanceState != null) {
-            usScore = savedInstanceState.getInt(U_SCORE, 0);
-            themScore = savedInstanceState.getInt(T_SCORE, 0);
-            usGames = savedInstanceState.getInt(U_GAMES, 0);
-            themGames = savedInstanceState.getInt(T_GAMES, 0);
+            int usScore = savedInstanceState.getInt(U_SCORE, 0);
+            int themScore = savedInstanceState.getInt(T_SCORE, 0);
+            int usGames = savedInstanceState.getInt(U_GAMES, 0);
+            int themGames = savedInstanceState.getInt(T_GAMES, 0);
         }
         //Since the Text by default is blank, this sets the text to the default variables onCreate
         displayScoreUs(usScore);
@@ -51,79 +51,49 @@ public class Score extends AppCompatActivity {
     //Add one Point to "Us" I feel there's Redundant code in the conditional part, but i'm not savvy enough to fix it.
     public void oneBtnUs(View v) {
         usScore = usScore + 1;
-        if (usScore >= 4) {
-            usGames = usGames + 1;
-            usScore = 0;
-            themScore = 0;
-        }
-        displayScoreThem(themScore);
-        displayGamesThem(themGames);
-        displayScoreUs(usScore);
-        displayGamesUs(usGames);
+        checkGames();
     }
 
     //Add two Points to "Us"
     public void twoBtnUs(View v) {
         usScore = usScore + 2;
-        if (usScore >= 4) {
-            usGames = usGames + 1;
-            usScore = 0;
-            themScore = 0;
-        }
-        displayScoreThem(themScore);
-        displayGamesThem(themGames);
-        displayScoreUs(usScore);
-        displayGamesUs(usGames);
+        checkGames();
     }
 
     //Add 4 Points to "Us"
     public void fourBtnUs(View v) {
         usScore = usScore + 4;
-        if (usScore >= 4) {
-            usGames = usGames + 1;
-            usScore = 0;
-            themScore = 0;
-        }
-        displayScoreThem(themScore);
-        displayGamesThem(themGames);
-        displayScoreUs(usScore);
-        displayGamesUs(usGames);
+        checkGames();
     }
 
     //Add 1 Point to "Them"
     public void oneBtnThem(View v) {
         themScore = themScore + 1;
-        if (themScore >= 4) {
-            themGames = themGames + 1;
-            themScore = 0;
-            usScore = 0;
-        }
-        displayScoreThem(themScore);
-        displayGamesThem(themGames);
-        displayScoreUs(usScore);
-        displayGamesUs(usGames);
-
+        checkGames();
     }
 
     //Add 2 Points to "Them"
     public void twoBtnThem(View v) {
         themScore = themScore + 2;
-        if (themScore >= 4) {
-            themGames = themGames + 1;
-            themScore = 0;
-            usScore = 0;
-        }
-        displayScoreThem(themScore);
-        displayGamesThem(themGames);
-        displayScoreUs(usScore);
-        displayGamesUs(usGames);
+        checkGames();
     }
 
     //Add 4 Points to "Them"
     public void fourBtnThem(View v) {
         themScore = themScore + 4;
+        checkGames();
+    }
+
+    //Checks if a player has 4 or more games and gives them +1 game.
+    //Also added the display calls to save on a bunch of lines of code!!
+    public void checkGames() {
         if (themScore >= 4) {
-            themGames = themGames + 1;
+            themGames++;
+            themScore = 0;
+            usScore = 0;
+        }
+        if (usScore >= 4) {
+            usGames++;
             themScore = 0;
             usScore = 0;
         }
